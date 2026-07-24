@@ -1,0 +1,14 @@
+﻿{
+  "name": "nothing-to-play-pipeline",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fetch": "node 1-fetch-games.mjs",
+    "covers": "node 2-download-covers.mjs",
+    "build": "node 3-build-assets.mjs",
+    "all": "node run-all.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.34.4"
+  }
+}
