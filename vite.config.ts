@@ -9,6 +9,11 @@ import glsl from 'vite-plugin-glsl'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
   return {
+    // Lets CI override this for deployments served from a subpath (e.g.
+    // GitHub Pages project sites: usuario.github.io/repo-name/). Defaults to
+    // root, which is correct for a custom domain, a user/org root site, or
+    // Cloudflare Pages/Netlify.
+    base: process.env.VITE_BASE_PATH || '/',
     plugins: [
       react({}),
       tailwindcss(),

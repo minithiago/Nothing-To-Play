@@ -171,7 +171,10 @@ await Promise.all([...Array.from({ length: CONCURRENCY }, worker), consumer()])
 console.log('\natlases written')
 
 // ---------- Env layer counts ----------
-const envPath = path.join(root, '.env.local')
+// Written to .env (not .env.local) and committed: the build needs these to
+// match exactly how many atlas layers/games shipped in this checkout, on
+// every machine that builds it, not just the one that ran the pipeline.
+const envPath = path.join(root, '.env')
 const layers = {
   VITE_MEDIA_VERSION_0_LAYERS: Math.ceil(games.length / (512 * 104)),
   VITE_MEDIA_VERSION_1_LAYERS: Math.ceil(games.length / 5400),

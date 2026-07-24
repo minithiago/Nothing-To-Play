@@ -49,7 +49,7 @@ The pipeline writes:
 - `public/json/{n}.json` — game info in batches of 216 (one per 18x12 subgrid)
 - `public/media/low|mid|high/dds/{n}.dds` — DXT1-compressed texture atlas layers
 - `public/media/single/{i}.jpg` — 220x330 covers for the selected-game view
-- `.env.local` — atlas layer counts (`VITE_MEDIA_VERSION_*_LAYERS`, `VITE_GAME_COUNT`)
+- `.env` — atlas layer counts (`VITE_MEDIA_VERSION_*_LAYERS`, `VITE_GAME_COUNT`), committed since the build needs to know exactly how many layers/games shipped
 
 ### 3. Start the dev server
 

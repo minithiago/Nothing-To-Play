@@ -37,8 +37,13 @@ export class Film {
   }
 }
 
+// Same rationale as media.ts: derive from Vite's BASE_URL so this keeps
+// working when served from a subpath, unless explicitly overridden.
+const filmInfoBaseUrl =
+  import.meta.env.VITE_FILM_INFO_BASE_URL ?? `${import.meta.env.BASE_URL}json`
+
 const loadCellFilmBatch = async (batchIndex: number) => {
-  const url = `${import.meta.env.VITE_FILM_INFO_BASE_URL}/${batchIndex}.json`
+  const url = `${filmInfoBaseUrl}/${batchIndex}.json`
   try {
     const response = await fetch(url)
     if (!response.ok) {

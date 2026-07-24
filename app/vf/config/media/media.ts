@@ -1,6 +1,12 @@
+// Derives from Vite's BASE_URL (set via the `base` config option) so paths
+// keep working whether the site is served from root or from a subpath
+// (e.g. a GitHub Pages project site). VITE_TEXTURES_BASE_URL can still
+// override this, e.g. to point at an external CDN.
+const defaultTexturesBaseUrl = `${import.meta.env.BASE_URL}media`
+
 const mediaConfig = {
   enabled: true,
-  baseUrl: import.meta.env.VITE_TEXTURES_BASE_URL ?? '/media',
+  baseUrl: import.meta.env.VITE_TEXTURES_BASE_URL ?? defaultTexturesBaseUrl,
   preload: 'first', // 'v0', 'first' or false
   compressionFormat: 'dds', // or 'ktx'
   versions: [
